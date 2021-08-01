@@ -1,4 +1,12 @@
+#include <iostream>
+#include<fstream>
+using namespace std;
+
+void read() {
+    //todo stuff
+}
+
 int main() {
-    int i = 17;
+    read();
     return 0;
 }
