@@ -10,7 +10,7 @@
 #include <string>
 using namespace std;
 
-class Iris : Classifiable {
+class Iris : public Classifiable {
 private:
     double width;
     double sepalLength;
@@ -23,7 +23,10 @@ public:
 
     string getClassification() const override;
 
-    double getDistance(const Classifiable &other) const override;
+    double getDistance(const Classifiable& other) const override;
+
+    void setValues(double width, double sepalLength, double sepalWidth, double petalLength,
+                           const string& classification) override;
 };
 
 
