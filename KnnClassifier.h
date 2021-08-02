@@ -13,7 +13,7 @@
 class KnnClassifier : public Classifier {
 private:
     int k;
-    const vector<Classifiable>* dataset;
+    const vector<Classifiable*>* dataset;
 
 public:
     /**
@@ -21,7 +21,7 @@ public:
      * @param k the k of knn
      * @param dataset the dataset. *this classifier doesn't delete it when deleted itself*.
      */
-    KnnClassifier(int k, const vector<Classifiable>* dataset);
+    KnnClassifier(int k, const vector<Classifiable*>* dataset);
 
     /**
      * returns the classification of c

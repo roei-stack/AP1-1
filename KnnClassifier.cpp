@@ -5,7 +5,7 @@
 #include "KnnClassifier.h"
 #include <algorithm>
 
-KnnClassifier::KnnClassifier(int k, const vector<Classifiable>* dataset) {
+KnnClassifier::KnnClassifier(int k, const vector<Classifiable*>* dataset) {
     this->k = k;
     this->dataset = dataset;
 }
@@ -18,8 +18,8 @@ string KnnClassifier::classify(const Classifiable& c) {
     public:
         explicit ClassifiablesComparatorByDistToClassifiable(const Classifiable& c) : classifiable(c) {}
 
-        bool operator() (const Classifiable& c1,const Classifiable& c2) {
-            return classifiable.getDistance(c1) < classifiable.getDistance(c2);
+        bool operator() (const Classifiable* c1,const Classifiable* c2) {
+            return classifiable.getDistance(*c1) < classifiable.getDistance(*c2);
         }
     };
     ClassifiablesComparatorByDistToClassifiable cmp(c);

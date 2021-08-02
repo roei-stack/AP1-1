@@ -9,6 +9,7 @@
 #include "Classifiable.h"
 
 class Classifier {
+public:
     /**
      * returns the classification of c
      * @param c to classify. c must be an appropriate Classifiable such that

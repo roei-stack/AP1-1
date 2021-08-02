@@ -24,10 +24,11 @@ vector<Classifiable*> Reader::buildDataset() {
         if (i == 105) {
             cout << "hi" << endl;
         }
+
         line = this->readLine();
-        Iris c(0, 0, 0, 0, "");
-        parseLine(line, &c);
-        data.push_back(&c);
+        Iris* c = new Iris(0, 0, 0, 0, "");
+        parseLine(line, c);
+        data.push_back(c);
         cout << "line #" << i << ": " << line << endl;
         i++;
     }
