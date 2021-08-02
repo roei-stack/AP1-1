@@ -54,16 +54,13 @@ string Reader::readLine() {
  * remember to free the database
  */
 void Reader::parseLine(const string& line, Classifiable* c) {
+    double petalLength, sepalWidth, sepalLength, width;
+    string type;
     //"petal length,sepal width, sepal length, width
     // array of 4 arguments = {
     stringstream values[5];
     stringstream check(line);
     string current;
-    double petalLength;
-    double sepalWidth;
-    double sepalLength;
-    double width;
-    string type;
     int i = 0;
     char delim = ',';
     while(getline(check, current, delim)) {

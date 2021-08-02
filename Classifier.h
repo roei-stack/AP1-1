@@ -1,0 +1,24 @@
+//
+// Created by user on 8/2/2021.
+//
+
+#ifndef ASS1_CLASSIFIER_H
+#define ASS1_CLASSIFIER_H
+
+#include <string>
+#include "Classifiable.h"
+
+class Classifier {
+    /**
+     * returns the classification of c
+     * @param c to classify. c must be an appropriate Classifiable such that
+     *     c knows how to calculate the distance from the Classifiables in this Classifier's dataset.
+     *     probably, c will have to be from the same type as them.
+     *     **if other's type won't be appropriate, an exception may be thrown.**
+     * @return string
+     */
+    virtual string classify(const Classifiable& c) = 0;
+};
+
+
+#endif //ASS1_CLASSIFIER_H

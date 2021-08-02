@@ -3,7 +3,6 @@
 //
 
 #include "KnnClassifier.h"
-#include <Classifiable.h>
 #include <algorithm>
 
 KnnClassifier::KnnClassifier(int k, const vector<Classifiable>* dataset) {
