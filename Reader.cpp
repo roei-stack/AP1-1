@@ -1,5 +1,6 @@
 #include "Reader.h"
 #include <sstream>
+#include <algorithm>
 
 /**
  * @param filePath the path to the input file
@@ -17,20 +18,13 @@ Reader::Reader(const string& filePath) {
  * @return a vector-list of pointers to heap-allocated Classifiable objects
  */
 vector<Classifiable*>* Reader::buildDataset() {
-    int i = 1;
     vector<Classifiable*>* data = new vector<Classifiable*>;
     string line;
     while (!this->file.eof()) {
-        if (i == 105) {
-            cout << "hi" << endl;
-        }
-
-        line = this->readLine();
+        this->readLine(line);
         Iris* c = new Iris(0, 0, 0, 0, "");
         parseLine(line, c);
         data->push_back(c);
-        cout << "line #" << i << ": " << line << endl;
-        i++;
     }
     // Requests the container to reduce its capacity to fit its size, so no memory is wasted
     data->shrink_to_fit();
@@ -42,10 +36,8 @@ vector<Classifiable*>* Reader::buildDataset() {
 /**
  * @return a new line from the file and moves to the next line
  */
-string Reader::readLine() {
-    string line;
-    getline(this->file, line);
-    return line;
+void Reader::readLine(string& line) {
+    this->file >> line;
 }
 
 /**
@@ -57,9 +49,10 @@ string Reader::readLine() {
 void Reader::parseLine(const string& line, Classifiable* c) {
     double petalLength, sepalWidth, sepalLength, width;
     string type;
-    //"petal length,sepal width, sepal length, width
-    // array of 4 arguments = {
+    //"petal length,sepal width, sepal length, width"
+    // array of 4 arguments, all initialized to empty string
     stringstream values[5];
+    values[4] = stringstream("");
     stringstream check(line);
     string current;
     int i = 0;

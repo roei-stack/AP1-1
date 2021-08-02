@@ -8,7 +8,7 @@ using namespace std;
 class Reader {
 private:
     ifstream file;
-    string readLine();
+    void readLine(string& line);
     static void parseLine(const string& line, Classifiable* c);
     void close();
 

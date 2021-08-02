@@ -27,6 +27,8 @@ public:
 
     void setValues(double width, double sepalLength, double sepalWidth, double petalLength,
                            const string& classification) override;
+
+    void setClassification(string newClassification) override;
 };
 
 

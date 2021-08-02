@@ -33,6 +33,8 @@ public:
     virtual void setValues(double width, double sepalLength, double sepalWidth, double petalLength,
                    const string& classification) = 0;
 
+    virtual void setClassification(string newClassification) = 0;
+
     /**
      * virtual destructor.
      */

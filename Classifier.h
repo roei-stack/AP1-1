@@ -1,11 +1,10 @@
 //
-// Created by user on 8/2/2021.
+// Created by User on 02/08/2021.
 //
 
 #ifndef ASS1_CLASSIFIER_H
 #define ASS1_CLASSIFIER_H
 
-#include <string>
 #include "Classifiable.h"
 
 class Classifier {
@@ -20,11 +19,13 @@ public:
      */
     virtual string classify(const Classifiable& c) = 0;
 
+
+
+
     /**
      * virtual destructor.
      */
-    virtual ~Classifier() = default;
+   // virtual ~Classifier() = default;
 };
-
 
 #endif //ASS1_CLASSIFIER_H

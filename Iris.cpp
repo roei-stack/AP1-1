@@ -39,4 +39,7 @@ void Iris::setValues(double width, double sepalLength, double sepalWidth, double
     this->classification = classification;
 }
 
+void Iris::setClassification(string newClassification) {
+    this->classification = newClassification;
+}
 

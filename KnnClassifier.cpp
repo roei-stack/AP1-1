@@ -1,13 +1,15 @@
 //
-// Created by user on 7/31/2021.
+// Created by User on 02/08/2021.
 //
 
 #include "KnnClassifier.h"
 #include <algorithm>
+#include <map>
 
-KnnClassifier::KnnClassifier(int k, const vector<Classifiable*>* dataset) {
-    this->k = k;
-    this->dataset = dataset;
+KnnClassifier::KnnClassifier(const int k, vector<Classifiable *> *dataset): k(k), dataset(dataset) {
+    votesMapping["Iris-setosa"] = 0;
+    votesMapping["Iris-versicolor"] = 0;
+    votesMapping["Iris-virginica"] = 0;
 }
 
 string KnnClassifier::classify(const Classifiable& c) {
@@ -24,12 +26,34 @@ string KnnClassifier::classify(const Classifiable& c) {
     };
     ClassifiablesComparatorByDistToClassifiable cmp(c);
     nth_element(this->dataset->begin(), this->dataset->begin() + k, this->dataset->end(), cmp);
-    // todo - in the nearest k, count # of shows of each classification.
-    //todo - find the classification with the max # of shows.
-    //todo - return it
-    return "";
+    return this->chooseBestClassification();
 }
 
+string KnnClassifier::chooseBestClassification() {
+    int index = 0;
+    pair<string, int> maxPair("", 0);
+    for (Classifiable *current : *this->dataset) {
+        if (index == this->k) {
+            break;
+        }
+        for (auto& item : votesMapping)
+        {
+            //item.first is the string key, item.second => it's int value
+            if (current->getClassification() == item.first) {
+                item.second++;
+                if (maxPair.second < item.second) {
+                    maxPair = item;
+                }
+            }
+        }
+        index++;
+    }
+    this->resetMap();
+    return maxPair.first;
+}
 
-
-
+void KnnClassifier::resetMap() {
+    for (auto& item : this->votesMapping) {
+        item.second = 0;
+    }
+}
