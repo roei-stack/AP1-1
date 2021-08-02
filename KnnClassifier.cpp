@@ -11,7 +11,7 @@ KnnClassifier::KnnClassifier(int k, const vector<Classifiable>* dataset) {
     this->dataset = dataset;
 }
 
-string KnnClassifier::classify(const Classifiable c) {
+string KnnClassifier::classify(const Classifiable& c) {
     // sorting the data set according to the distance from c
     class ClassifiablesComparatorByDistToClassifiable {
     private:

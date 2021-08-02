@@ -17,7 +17,7 @@ private:
 public:
     KnnClassifier(int k, const vector<Classifiable>* dataset);
 
-    string classify(Classifiable c) override;
+    string classify(const Classifiable& c) override;
 };
 
 
