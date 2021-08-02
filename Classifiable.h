@@ -32,6 +32,11 @@ public:
 
     virtual void setValues(double width, double sepalLength, double sepalWidth, double petalLength,
                    const string& classification) = 0;
+
+    /**
+     * virtual destructor.
+     */
+    virtual ~Classifiable() = default;
 };
 
 

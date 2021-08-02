@@ -18,6 +18,11 @@ class Classifier {
      * @return string
      */
     virtual string classify(const Classifiable& c) = 0;
+
+    /**
+     * virtual destructor.
+     */
+    virtual ~Classifier() = default;
 };
 
 
