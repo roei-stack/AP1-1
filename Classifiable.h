@@ -29,6 +29,9 @@ public:
      * @return double
      */
     virtual double getDistance(const Classifiable& other) const = 0;
+
+    virtual void setValues(double width, double sepalLength, double sepalWidth, double petalLength,
+                   const string& classification) = 0;
 };
 
 

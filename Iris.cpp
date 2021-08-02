@@ -29,3 +29,14 @@ double Iris::getDistance(const Classifiable& other) const {
             );
     return d;
 }
+
+void Iris::setValues(double width, double sepalLength, double sepalWidth, double petalLength,
+                           const string &classification) {
+    this->width = width;
+    this->sepalLength = sepalLength;
+    this->sepalWidth = sepalWidth;
+    this->petalLength = petalLength;
+    this->classification = classification;
+}
+
+
