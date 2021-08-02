@@ -12,10 +12,10 @@
 class KnnClassifier : public Classifier {
 private:
     int k;
-    vector<Classifiable> dataset;
+    const vector<Classifiable>* dataset;
 
 public:
-    KnnClassifier(int k, const vector<Classifiable>& dataset);
+    KnnClassifier(int k, const vector<Classifiable>* dataset);
 
     string classify(Classifiable c) override;
 };
