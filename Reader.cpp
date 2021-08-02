@@ -16,9 +16,9 @@ Reader::Reader(const string& filePath) {
  * builds the database from the csv file
  * @return a vector-list of pointers to heap-allocated Classifiable objects
  */
-vector<Classifiable*> Reader::buildDataset() {
+vector<Classifiable*>* Reader::buildDataset() {
     int i = 1;
-    vector<Classifiable*> data;
+    vector<Classifiable*>* data = new vector<Classifiable*>;
     string line;
     while (!this->file.eof()) {
         if (i == 105) {
@@ -28,12 +28,12 @@ vector<Classifiable*> Reader::buildDataset() {
         line = this->readLine();
         Iris* c = new Iris(0, 0, 0, 0, "");
         parseLine(line, c);
-        data.push_back(c);
+        data->push_back(c);
         cout << "line #" << i << ": " << line << endl;
         i++;
     }
     // Requests the container to reduce its capacity to fit its size, so no memory is wasted
-    data.shrink_to_fit();
+    data->shrink_to_fit();
     // closing the file as we no longer need it
     this->close();
     return data;

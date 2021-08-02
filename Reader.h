@@ -6,15 +6,14 @@
 
 using namespace std;
 class Reader {
-    private:
-     ifstream file;
-     string readLine();
-     static void parseLine(const string& line, Classifiable* c);
-     void close();
-    public:
+private:
+    ifstream file;
+    string readLine();
+    static void parseLine(const string& line, Classifiable* c);
+    void close();
 
+public:
     explicit Reader(const string& filePath);
 
-     vector<Classifiable *> buildDataset();
-
+    vector<Classifiable*>* buildDataset();
 };
