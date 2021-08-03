@@ -1,6 +1,6 @@
 #include "Reader.h"
 #include "KnnClassifier.h"
-#define K 12
+#define K 11
 
 /** @param dataset prints the data to the console */
 void printData(const vector<Classifiable*>* dataset) {
