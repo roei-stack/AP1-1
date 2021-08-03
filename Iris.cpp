@@ -5,7 +5,6 @@
 #include "Iris.h"
 #include <cmath>
 
-
 Iris::Iris(double width, double sepalLength, double sepalWidth, double petalLength,
            const string& classification) {
     this->width = width;
@@ -31,7 +30,7 @@ double Iris::getDistance(const Classifiable& other) const {
 }
 
 void Iris::setValues(double width, double sepalLength, double sepalWidth, double petalLength,
-                           const string &classification) {
+                      const string &classification) {
     this->width = width;
     this->sepalLength = sepalLength;
     this->sepalWidth = sepalWidth;

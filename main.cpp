@@ -1,6 +1,6 @@
 #include "Reader.h"
 #include "KnnClassifier.h"
-#define K 12
+#define K_VALUE 11
 
 /** @param dataset prints the data to the console */
 void printData(const vector<Classifiable*>* dataset) {
@@ -19,14 +19,13 @@ void printData(const vector<Classifiable*>* dataset) {
  * @param unclassifiedData the unclassified data
  */
 void classifyAll(vector<Classifiable*>* classifiedData, vector<Classifiable*>* unclassifiedData) {
-    KnnClassifier classifier(K, classifiedData);
+    KnnClassifier classifier(K_VALUE, classifiedData);
     for (Classifiable* c: *unclassifiedData) {
         c->setClassification(classifier.classify(*c));
     }
 }
 
-int main()
-{
+int main() {
     string classifiedPath = "..\\classified.csv";
     string unclassifiedPath = "..\\unclassified.csv";
     //// initializing the reader for classified and unclassified
