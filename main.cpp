@@ -25,8 +25,7 @@ void classifyAll(vector<Classifiable*>* classifiedData, vector<Classifiable*>* u
     }
 }
 
-int main()
-{
+int main() {
     string classifiedPath = "..\\classified.csv";
     string unclassifiedPath = "..\\unclassified.csv";
     //// initializing the reader for classified and unclassified
