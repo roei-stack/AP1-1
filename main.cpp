@@ -1,8 +1,8 @@
 #include "Reader.h"
 #include "KnnClassifier.h"
+#define K 12
 
-using namespace std;
-
+/** @param dataset prints the data to the console */
 void printData(const vector<Classifiable*>* dataset) {
     int i = 1;
     cout << "*********************************************" << endl << "Reading from classified..." << endl;
@@ -13,8 +13,13 @@ void printData(const vector<Classifiable*>* dataset) {
     cout << i - 1 << " Lines read successfully!" << endl << "*********************************************" << endl;
 }
 
+/**
+ * goes through all unclassified data and applies the classify function
+ * @param classifiedData the classified data
+ * @param unclassifiedData the unclassified data
+ */
 void classifyAll(vector<Classifiable*>* classifiedData, vector<Classifiable*>* unclassifiedData) {
-    KnnClassifier classifier(12, classifiedData);
+    KnnClassifier classifier(K, classifiedData);
     for (Classifiable* c: *unclassifiedData) {
         c->setClassification(classifier.classify(*c));
     }
@@ -35,7 +40,7 @@ int main()
     printData(unclassifiedData);
     // applying classifier
     classifyAll(classifiedData, unclassifiedData);
-
-    cout << "lol";
+    //todo write the unclassified data to a new csv file
+    //todo make sure the data is entered in the right order
     return 0;
 }
