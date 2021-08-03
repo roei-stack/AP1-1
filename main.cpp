@@ -27,8 +27,8 @@ void classifyAll(vector<Classifiable*>* classifiedData, vector<Classifiable*>* u
 
 int main()
 {
-    string classifiedPath = R"(C:\Users\User\Desktop\CPP\classified.csv)";
-    string unclassifiedPath = R"(C:\Users\User\Desktop\CPP\unclassified.csv)";
+    string classifiedPath = "..\\classified.csv";
+    string unclassifiedPath = "..\\unclassified.csv";
     //// initializing the reader for classified and unclassified
     Reader reader(classifiedPath);
     Reader otherReader(unclassifiedPath);
