@@ -33,8 +33,7 @@ public:
     *     **if other's type won't be appropriate, an exception may be thrown.**
     * @return string
     */
-    string classify(const Classifiable& c);
+    string classify(const Classifiable& c) override;
 };
-
 
 #endif //ASS1_KNNCLASSIFIER_H
