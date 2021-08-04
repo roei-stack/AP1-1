@@ -25,6 +25,18 @@ void classifyAll(vector<Classifiable*>* classifiedData, vector<Classifiable*>* u
     }
 }
 
+/**
+ * deletes the vector and it's content.
+ * @param toRelease
+ */
+void release(vector<Classifiable*>* toRelease) {
+    for (Classifiable* c : *toRelease) {
+        delete c;
+    }
+    vector<Classifiable*>().swap(*toRelease);
+    delete toRelease;
+}
+
 int main() {
     string classifiedPath = "..\\classified.csv";
     string unclassifiedPath = "..\\unclassified.csv";
@@ -34,12 +46,19 @@ int main() {
     //// loading the datasets
     vector<Classifiable*>* classifiedData = reader.buildDataset();
     vector<Classifiable*>* unclassifiedData = otherReader.buildDataset();
-    // todo delete these 2 lines after finishing
+
     printData(classifiedData);
     printData(unclassifiedData);
+
     // applying classifier
     classifyAll(classifiedData, unclassifiedData);
+
     //todo write the unclassified data to a new csv file
     //todo make sure the data is entered in the right order
+
+    // releasing
+    release(classifiedData);
+    release(unclassifiedData);
+
     return 0;
 }
