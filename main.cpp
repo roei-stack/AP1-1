@@ -1,16 +1,28 @@
 #include "Reader.h"
 #include "KnnClassifier.h"
-#define K_VALUE 11
+#define K_VALUE 5
 
-/** @param dataset prints the data to the console */
-void printData(const vector<Classifiable*>* dataset) {
+/** @param dataset prints the data to the console, will be used for testing purposes. */
+void testReading(const vector<Classifiable*>* dataset) {
     int i = 1;
     cout << "*********************************************" << endl << "Reading from classified..." << endl;
     for (Classifiable* c : *dataset) {
-        cout << "Line #" << i << " Classification: " << c->getClassification() << endl;
+        cout << "Line #" << i << " : " << *c << endl;
         i++;
     }
     cout << i - 1 << " Lines read successfully!" << endl << "*********************************************" << endl;
+}
+
+/**
+ * writes the dataset to an output file
+ * @param dataset the dataset
+ * @param out the out file
+ */
+void writeToFile(const vector<Classifiable*>* dataset, ofstream& out) {
+    for (Classifiable* c : *dataset) {
+        out << *c << endl;
+    }
+    out.close();
 }
 
 /**
@@ -25,6 +37,18 @@ void classifyAll(vector<Classifiable*>* classifiedData, vector<Classifiable*>* u
     }
 }
 
+/**
+ * deletes the vector and it's content.
+ * @param toRelease
+ */
+void release(vector<Classifiable*>* toRelease) {
+    for (Classifiable* c : *toRelease) {
+        delete c;
+    }
+    vector<Classifiable*>().swap(*toRelease);
+    delete toRelease;
+}
+
 int main() {
     string classifiedPath = "..\\classified.csv";
     string unclassifiedPath = "..\\unclassified.csv";
@@ -34,12 +58,13 @@ int main() {
     //// loading the datasets
     vector<Classifiable*>* classifiedData = reader.buildDataset();
     vector<Classifiable*>* unclassifiedData = otherReader.buildDataset();
-    // todo delete these 2 lines after finishing
-    printData(classifiedData);
-    printData(unclassifiedData);
     // applying classifier
     classifyAll(classifiedData, unclassifiedData);
-    //todo write the unclassified data to a new csv file
-    //todo make sure the data is entered in the right order
+    ofstream outFile;
+    outFile.open("output.csv");
+    writeToFile(unclassifiedData, outFile);
+    // releasing
+    release(classifiedData);
+    release(unclassifiedData);
     return 0;
 }
