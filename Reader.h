@@ -13,6 +13,5 @@ private:
 
 public:
     explicit Reader(const string& filePath);
-
     vector<Classifiable*>* buildDataset();
 };
