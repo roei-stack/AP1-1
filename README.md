@@ -2,8 +2,7 @@
 
 ************By************
 
-Itamar Gefen
-Roei Cohen
+Itamar Gefen and Roei Cohen
 
 *******Instructions*******
 
@@ -26,5 +25,5 @@ Roei Cohen
 
 1. Code was written with respect to OOP rules and coding style in mind
 2. used the "select" algorith to find the k nearest neibours which takes O(n) time, instead of sorting which takes at least O(nlogn)
-3. 
+
 **************************
