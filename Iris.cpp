@@ -4,6 +4,7 @@
 
 #include "Iris.h"
 #include <cmath>
+#include <iostream>
 
 Iris::Iris(double width, double sepalLength, double sepalWidth, double petalLength,
            const string& classification) {
@@ -42,3 +43,8 @@ void Iris::setClassification(string newClassification) {
     this->classification = newClassification;
 }
 
+void Iris::Print(ostream &os) const {
+    char sep = ',';
+    os << this->petalLength << sep << this->sepalWidth << sep <<
+    this->sepalLength<< sep<< this->width << sep << this->classification;
+}

@@ -12,6 +12,9 @@ using namespace std;
  * interface of an classifiable object.
  */
 class Classifiable {
+private:
+    /// derivation interface
+    virtual void Print(ostream& os) const = 0;
 public:
     /**
      * returns the classification of this.
@@ -34,6 +37,11 @@ public:
                    const string& classification) = 0;
 
     virtual void setClassification(string newClassification) = 0;
+
+    friend ostream& operator<<(ostream& out, const Classifiable& b) {
+        b.Print(out);
+        return out;
+    }
 
     /**
      * virtual destructor.

@@ -17,6 +17,7 @@ private:
     double sepalWidth;
     double petalLength;
     string classification;
+    void Print(ostream& os) const override;
 public:
     Iris(double width, double sepalLength, double sepalWidth, double petalLength,
          const string& classification = "");
