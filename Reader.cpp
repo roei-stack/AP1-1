@@ -18,10 +18,9 @@ Reader::Reader(const string& filePath) {
  * @return a vector-list of pointers to heap-allocated Classifiable objects
  */
 vector<Classifiable*>* Reader::buildDataset() {
-    vector<Classifiable*>* data = new vector<Classifiable*>;
+    auto* data = new vector<Classifiable*>; // static type is vector<Classifiable*>
     string line;
-    while (!this->file.eof()) {
-        this->readLine(line);
+    while (this->file >> line) {
         Iris* c = new Iris(0, 0, 0, 0, "");
         parseLine(line, c);
         data->push_back(c);
@@ -31,13 +30,6 @@ vector<Classifiable*>* Reader::buildDataset() {
     // closing the file as we no longer need it
     this->close();
     return data;
-}
-
-/**
- * @return a new line from the file and moves to the next line
- */
-void Reader::readLine(string& line) {
-    this->file >> line;
 }
 
 /**
